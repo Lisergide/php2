@@ -6,6 +6,7 @@
  * Time: 23:23
  */
 
+// Задание 1-4
 class Product {
 
     private $id;
