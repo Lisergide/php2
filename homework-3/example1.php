@@ -41,7 +41,7 @@ try {
 
     // передаем в шаблон переменные и значения
     // выводим сформированное содеражание
-    echo $template->render(array (
+    echo $template->render(array(
         'img' => $img
     ));
 
