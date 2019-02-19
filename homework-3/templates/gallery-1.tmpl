@@ -1,0 +1,22 @@
+<html>
+<head>
+    <style>
+        .img-link{
+            text-decoration: none;
+            margin: 0 4px;
+        }
+        .img-min{
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+{% for img in img %}
+    <a href="{{ img }}" class="img-link" target="_blank">
+    <img class="img-min" src="{{ img }}" alt="img">
+    </a>
+{% endfor %}
+</div>
+</body>
+</html>
