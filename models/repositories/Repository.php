@@ -21,7 +21,7 @@ abstract class Repository implements IRepository {
     $this->db = $this->getDb();
   }
 
-  public function getOne(int $id) {
+  public function getOne($id) {
     $tableName = $this->getTableName();
     $sql = "SELECT * FROM {$tableName} WHERE id = :id";
     return $this->db->queryObject($sql, $this->getRecordClass(), [":id" => $id])[0];
