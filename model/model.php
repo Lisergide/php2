@@ -1,1 +1,0 @@
-<?phprequire_once('model/model.php');function text_get() {    return file_get_contents('data/text.txt');}function text_set($text) {    file_put_contents('data/text.txt', $text);}function getLogin() {    if (isset($_REQUEST['username']) && isset($_REQUEST['password'])) {        return 'login';    } else {        return 'invalid user';    }}
