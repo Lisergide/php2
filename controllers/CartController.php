@@ -1,0 +1,60 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: U_M113S
+ * Date: 26.02.2019
+ * Time: 13:53
+ */
+
+namespace app\controllers;
+
+use app\base\App;
+use app\services\Request;
+use app\models\repositories\CartRepository;
+use app\models\repositories\ProductRepository;
+
+
+class CartController extends Controller {
+
+  public function actionIndex() {
+    $productsInCart = (new CartRepository())->getCart();
+    if (!$productsInCart) {
+      $productsInCart = [];
+    }
+    echo $this->render("cart", ['product' => $productsInCart, 'className' => $this->getClassName()]);
+  }
+
+  public function actionCard() {
+    $id = (new Request())->getParams()['id'];
+    $product = (new CartRepository())->getOne($id);
+    echo $this->render("card", ['product' => $product, 'className' => $this->getClassName()]);
+  }
+
+  public function actionAdd() {
+    App::call()->request->getHttpReferrer();
+    $id = (new Request())->getParams()['id'];
+    $productInCart = (new ProductRepository())->getOne($id);
+    new CartRepository($productInCart, $id);
+  }
+
+  public function actionDel() {
+    App::call()->request->getHttpReferrer();
+    $id = App::call()->request->getParams()['id'];
+    (new CartRepository)->decreaseItemQ_ty($id);
+  }
+
+  public function actionRemove() {
+    App::call()->request->getHttpReferrer();
+    $id = App::call()->request->getParams()['id'];
+    (new CartRepository)->deleteItem($id);
+  }
+
+  public function actionClear() {
+    App::call()->request->getHttpReferrer();
+    (new CartRepository)->clearCart();
+  }
+
+  public function getClassName() {
+    return 'cart';
+  }
+}
