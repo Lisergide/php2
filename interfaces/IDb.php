@@ -10,5 +10,5 @@ namespace app\interfaces;
 
 
 interface IDb {
-    function execute(string $sql, array $params = []);
+  function execute(string $sql, array $params = []);
 }

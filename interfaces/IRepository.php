@@ -11,10 +11,10 @@ namespace app\interfaces;
 
 interface IRepository {
 
-    function getOne(int $id);
+  function getOne(int $id);
 
-    function getAll();
+  function getAll();
 
-    function getTableName(): string;
+  function getTableName(): string;
 
 }

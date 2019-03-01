@@ -6,6 +6,9 @@
  * Time: 16:05
  */
 
-include ('../config/main.php');
 include ('../vendor/autoload.php');
+
+$config = include ('../config/main.php');
+
+\app\base\App::call()->run($config);
 

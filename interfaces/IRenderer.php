@@ -11,6 +11,6 @@ namespace app\interfaces;
 
 interface IRenderer {
 
-    function render($template, $params = []);
+  function render($template, $params = []);
 
 }

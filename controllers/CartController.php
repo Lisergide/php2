@@ -8,6 +8,7 @@
 
 namespace app\controllers;
 
+use app\base\App;
 use app\services\Request;
 use app\models\repositories\CartRepository;
 use app\models\repositories\ProductRepository;
@@ -16,8 +17,11 @@ use app\models\repositories\ProductRepository;
 class CartController extends Controller {
 
   public function actionIndex() {
-    $product = (new CartRepository())->getAll();
-    echo $this->render("cart", ['product' => $product, 'className' => $this->getClassName()]);
+    $productsInCart = (new CartRepository())->getCart();
+    if (!$productsInCart) {
+      $productsInCart = [];
+    }
+    echo $this->render("cart", ['product' => $productsInCart, 'className' => $this->getClassName()]);
   }
 
   public function actionCard() {
@@ -27,33 +31,30 @@ class CartController extends Controller {
   }
 
   public function actionAdd() {
+    App::call()->request->getHttpReferrer();
     $id = (new Request())->getParams()['id'];
-    if (!$this->checkIfInCart()) {
-      $product = (new ProductRepository())->getOne($id);
-      (new CartRepository)->insert($product);
-      echo $this->render("card", ['product' => $product, 'className' => $this->getClassName()]);
-    }
+    $productInCart = (new ProductRepository())->getOne($id);
+    new CartRepository($productInCart, $id);
   }
 
   public function actionDel() {
-    $id = (new Request())->getParams()['id'];
-    if ($this->checkIfInCart()) {
-      $product = (new ProductRepository())->getOne($id);
-      (new CartRepository)->delete($product);
-      $location = $_SERVER['HTTP_REFERER'];
-      header('Location:' . $location);
-    }
+    App::call()->request->getHttpReferrer();
+    $id = App::call()->request->getParams()['id'];
+    (new CartRepository)->decreaseItemQ_ty($id);
+  }
+
+  public function actionRemove() {
+    App::call()->request->getHttpReferrer();
+    $id = App::call()->request->getParams()['id'];
+    (new CartRepository)->deleteItem($id);
+  }
+
+  public function actionClear() {
+    App::call()->request->getHttpReferrer();
+    (new CartRepository)->clearCart();
   }
 
   public function getClassName() {
     return 'cart';
-  }
-
-  public function checkIfInCart() {
-    $id = (new Request())->getParams()['id'];
-    $product = (new CartRepository())->getOne($id);
-    if ($product !== null) {
-      return true;
-    }
   }
 }

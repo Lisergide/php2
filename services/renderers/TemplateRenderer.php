@@ -8,6 +8,7 @@
 
 namespace app\services\renderers;
 
+use app\base\App;
 use app\interfaces\IRenderer;
 
 class TemplateRenderer implements IRenderer {
@@ -15,9 +16,9 @@ class TemplateRenderer implements IRenderer {
   public function render($template, $params = []) {
     ob_start();
     if ($template == 'main') {
-      $templatePath = TEMPLATES_DIR . "layouts/$template" . ".php";
+      $templatePath = App::call()->config['templatesDir'] . "layouts/$template" . ".php";
     } else {
-      $templatePath = TEMPLATES_DIR . "{$params['className']}/$template" . ".php";
+      $templatePath = App::call()->config['templatesDir'] . "{$params['className']}/$template" . ".php";
     }
     extract($params);
 
