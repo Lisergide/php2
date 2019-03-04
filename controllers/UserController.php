@@ -13,19 +13,14 @@ use app\base\App;
 
 class UserController extends Controller {
 
-  public function actionIndex() {
-    $user = new UserRepository();
-    echo $this->render("checkout", ['user' => $user, 'className' => $this->getClassName()]);
-  }
-
-  public function actionLogin() {
+  public function login() {
     App::call()->request->getHttpReferrer();
     $userRepository = new UserRepository();
     $formInfo = $userRepository->getFormInfo();
     $userRepository->ifUserExists($formInfo);
   }
 
-  public function actionRegister() {
+  public function register() {
     App::call()->request->getHttpReferrer();
     $userRepository = new UserRepository();
     $formInfo = $userRepository->getFormInfo();
@@ -33,13 +28,4 @@ class UserController extends Controller {
       $userRepository->addUserToDb($formInfo);
     };
   }
-
-  public function actionLogout() {
-
-  }
-
-  public function getClassName() {
-    return 'user';
-  }
-
 }

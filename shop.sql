@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3307
--- Время создания: Мар 01 2019 г., 15:44
+-- Время создания: Мар 04 2019 г., 17:25
 -- Версия сервера: 5.6.41
 -- Версия PHP: 7.2.10
 
@@ -70,14 +70,14 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `descriptions`, `price`, `vendor_id`, `img_src`) VALUES
-(1, 'MANGO PEOPLE T-SHIRT', 'Description', 52, 1, 'img/item1.png'),
-(2, 'MANGO PEOPLE T-SHIRT', 'Description', 52, 1, 'img/item2.png'),
-(3, 'MANGO PEOPLE T-SHIRT', 'Description', 52, 1, 'img/item3.png'),
-(4, 'MANGO PEOPLE T-SHIRT', 'Description', 52, 1, 'img/item4.png'),
-(5, 'MANGO PEOPLE T-SHIRT', 'Description', 52, 1, 'img/item5.png'),
-(6, 'MANGO PEOPLE T-SHIRT', 'Description', 52, 1, 'img/item6.png'),
-(7, 'MANGO PEOPLE T-SHIRT', 'Description', 52, 1, 'img/item7.png'),
-(8, 'MANGO PEOPLE T-SHIRT', 'Description', 52, 1, 'img/item8.png');
+(1, 'MANGO PEOPLE T-SHIRT', 'Description', 52, 1, 'img/Item1.png'),
+(2, 'MANGO PEOPLE T-SHIRT', 'Description', 52, 2, 'img/Item2.png'),
+(3, 'MANGO PEOPLE T-SHIRT', 'Description', 52, 3, 'img/Item3.png'),
+(4, 'MANGO PEOPLE T-SHIRT', 'Description', 52, 4, 'img/Item4.png'),
+(5, 'MANGO PEOPLE T-SHIRT', 'Description', 52, 5, 'img/Item5.png'),
+(6, 'MANGO PEOPLE T-SHIRT', 'Description', 52, 6, 'img/Item6.png'),
+(7, 'MANGO PEOPLE T-SHIRT', 'Description', 52, 7, 'img/Item7.png'),
+(8, 'MANGO PEOPLE T-SHIRT', 'Description', 52, 8, 'img/Item8.png');
 
 -- --------------------------------------------------------
 

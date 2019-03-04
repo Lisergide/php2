@@ -9,11 +9,8 @@
 namespace app\services;
 
 use app\interfaces\IDb;
-//use app\traits\TSingleton;
-
 
 class Db implements IDb {
-//  use TSingleton;
 
   private $config;
 
@@ -44,7 +41,7 @@ class Db implements IDb {
     return $this->conn;
   }
 
-  private function query(string $sql, array $params = []) {
+  private function query($sql, array $params = []) {
     $pdoStatement = $this->getConnection()->prepare($sql);
 
     $pdoStatement->execute($params);

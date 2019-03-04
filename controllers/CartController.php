@@ -21,13 +21,7 @@ class CartController extends Controller {
     if (!$productsInCart) {
       $productsInCart = [];
     }
-    echo $this->render("cart", ['product' => $productsInCart, 'className' => $this->getClassName()]);
-  }
-
-  public function actionCard() {
-    $id = (new Request())->getParams()['id'];
-    $product = (new CartRepository())->getOne($id);
-    echo $this->render("card", ['product' => $product, 'className' => $this->getClassName()]);
+    echo $this->render("cart", ['products' => $productsInCart, 'className' => $this->getClassName()]);
   }
 
   public function actionAdd() {

@@ -13,7 +13,7 @@ use app\models\Product;
 class ProductRepository extends Repository {
 
   public function getTableName(): string {
-    return 'featureditems';
+    return 'product';
   }
 
   public function getRecordClass() {

@@ -9,15 +9,22 @@
 namespace app\controllers;
 
 use app\models\repositories\ProductRepository;
-
-//use app\services\Request;
-
+use app\models\repositories\SessionRepository;
+use app\models\repositories\CartRepository;
+use app\base\App;
 
 class ProductController extends Controller {
 
   public function actionIndex() {
-    $product = (new ProductRepository())->getAll();
-    echo $this->render("featureditems", ['product' => $product, 'className' => $this->getClassName()]);
+    new SessionRepository();
+    $products = (new ProductRepository())->getAll();
+    echo $this->render("featureditems", ['product' => $products, 'className' => $this->getClassName()]);
+  }
+
+  public function actionDel() {
+    App::call()->request->getHttpReferrer();
+    $id = App::call()->request->getParams()['id'];
+    (new CartRepository())->deleteItem($id);
   }
 
 //  public function actionCard() {

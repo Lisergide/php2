@@ -12,12 +12,14 @@ namespace app\models;
 class Order extends Record {
 
   public $id;
+  public $order;
   public $user;
-  public $address;
-  public $orderJson;
-  public $status;
+  public $status = 'new';
 
-  static function getTableName(): string {
-    return 'orders';
+  public function __construct($id = null, $order = null, $user = null, $status = 'new') {
+    $this->id = $id;
+    $this->order = $order;
+    $this->user = $user;
+    $this->status = $status;
   }
 }

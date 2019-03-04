@@ -1,6 +1,6 @@
 <?php
 $totalPrice = 0;
-$str = "
+$str="
   <section class=\"newarrivalsmenWoman\">
       <div class=\"newarrivals container onshoppingcartpage\">
           <div class=\"leftpartnewarrivals\">
@@ -34,7 +34,7 @@ $str = "
 ";
 foreach ($products as $key => $value) {
   $totalPrice += $products[$key]->total_price;
-  $str .= "
+  $str.= "
   <article class='ShoppingCartProduct'>
       <div class='ShoppingCartProduct__productdetails'>
           <div class='ShoppingCartProduct__image'>
@@ -70,11 +70,9 @@ foreach ($products as $key => $value) {
           <i class='fas fa-times-circle'></i>
       </a>
   </article>";
-
-
 }
 
-$str .= "
+$str.="
   <div class=\"ShoppingCartButtons\">
                 <form action='/cart/clear'>
                   <button class=\"ShoppingCartButtons__button\">CLEAR SHOPPING CART</button>
@@ -107,7 +105,7 @@ $str .= "
                       <span class=\"proceedToCheckOut__spanGrandTotal\">$ $totalPrice</span>
                   </p>
                   <hr>
-                  <a class=\"proceedToCheckOut__button\" href=\"/user\">proceed to&nbsp;checkout</a>
+                  <a class=\"proceedToCheckOut__button\" href=\"/checkout\">proceed to&nbsp;checkout</a>
               </div>
           </div>
       </div>
