@@ -1,0 +1,23 @@
+{
+  "name": "lisichkin/framework",
+  "description": "GeekBrains MVC app template",
+  "minimum-stability": "stable",
+  "require": {
+    "twig/twig": "^2.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "app\\" : "./"
+    }
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Boris Lisichkin",
+      "email": "email@example.com"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "8"
+  }
+}
